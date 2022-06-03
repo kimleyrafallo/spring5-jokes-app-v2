@@ -8,9 +8,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class JokesServiceImpl implements JokesService {
 
+    private final ChuckNorrisQuotes chuckNorrisQuotes;
+
+    public JokesServiceImpl() {
+        this.chuckNorrisQuotes = new ChuckNorrisQuotes();
+    }
+
     @Override
     public String getJoke() {
-        ChuckNorrisQuotes chuckNorrisQuotes = new ChuckNorrisQuotes();
-        return chuckNorrisQuotes.getRandomQuote();
+        return this.chuckNorrisQuotes.getRandomQuote();
     }
 }
